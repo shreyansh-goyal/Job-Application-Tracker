@@ -69,11 +69,12 @@ const updateJobById = async (req, res) => {
 
     const validStatuses = ["applied", "interview", "offer", "rejected"];
 
+    console.log("Updating job with data: ", req.body);
     if (status && !validStatuses.includes(status)) {
       return res.status(400).json({ error: "Enter valid status" });
     }
 
-    const updatedJob = Job.findByIdAndUpdate(jobId, req.body, {
+    const updatedJob = await Job.findByIdAndUpdate(jobId, req.body, {
       new: true,
       runValidators: true,
     });
@@ -99,7 +100,7 @@ const deleteJobById = async (req, res) => {
       .json({ error: "userId and jobId are mandatory fields" });
   }
 
-  const deletedJob = Job.deleteOne({ _id: jobId, userId });
+  const deletedJob = await Job.deleteOne({ _id: jobId, userId });
 
   if (!deletedJob) {
     return res.status(400).json({ error: "Job not found" });

@@ -3,9 +3,12 @@ const User = require("../db/models/user.schema");
 
 const createJob = async (req, res) => {
   try {
-    const { role, companyName, status, notes, userId } = req.body;
+    const { userId } = req.user;
+    const { role, companyName, status, notes } = req.body;
     const validStatuses = ["applied", "interview", "offer", "rejected"];
 
+    console.log("req.user:", req.user);
+    console.log("userId:", userId);
     if (!role || !companyName || !userId) {
       return res
         .status(400)
@@ -18,6 +21,8 @@ const createJob = async (req, res) => {
     console.log("Received job data: ", req.body);
 
     const userExists = await User.findOne({ _id: userId });
+
+    console.log(userExists);
     if (!userExists) {
       return res.status(400).json({ error: "User not found" });
     }
@@ -32,11 +37,13 @@ const createJob = async (req, res) => {
 
 const getJobs = async (req, res) => {
   try {
-    const { userId } = req.query;
+    const { userId } = req.user;
+    console.log(req.user);
     if (!userId) {
       return res.status(400).json({ error: "userId is required" });
     }
     const jobs = await Job.find({ userId });
+
     return res.status(200).json(jobs);
   } catch (err) {
     console.log(err);
@@ -46,7 +53,7 @@ const getJobs = async (req, res) => {
 
 const getJobById = async (req, res) => {
   try {
-    const { userId } = req.query;
+    const { userId } = req.user;
     const { id: jobId } = req.params;
     if (!userId || !jobId) {
       return res.status(400).json({ error: "userId and jobId are required" });
@@ -63,7 +70,7 @@ const getJobById = async (req, res) => {
 
 const updateJobById = async (req, res) => {
   try {
-    const { userId } = req.query;
+    const { userId } = req.user;
     const { id: jobId } = req.params;
     const { role, companyName, status, notes } = req.body;
 
@@ -91,7 +98,7 @@ const updateJobById = async (req, res) => {
 };
 
 const deleteJobById = async (req, res) => {
-  const { userId } = req.query;
+  const { userId } = req.user;
   const { id: jobId } = req.params;
 
   if (!userId || !jobId) {

@@ -1,0 +1,94 @@
+2026-06-27T12:02:46.318Z [INFO] Server is running on port 3000
+2026-06-27T12:02:46.330Z [INFO] Server is running on port 3000
+2026-06-27T12:02:46.371Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:02:46.381Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:21:41.133Z [INFO] Server is running on port 3000
+2026-06-27T12:21:41.182Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:21:41.174Z [INFO] Server is running on port 3000
+2026-06-27T12:21:41.223Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:21:50.885Z [INFO] Server is running on port 3000
+2026-06-27T12:21:50.885Z [INFO] Server is running on port 3000
+2026-06-27T12:21:50.935Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:21:50.937Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:23:26.674Z [INFO] ::1 - - [27/Jun/2026:12:23:26 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 401 25 "-" "PostmanRuntime/7.54.0"
+2026-06-27T12:38:16.871Z [INFO] Server is running on port 3000
+2026-06-27T12:38:16.914Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:38:16.925Z [INFO] Server is running on port 3000
+2026-06-27T12:38:16.975Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:43:11.241Z [INFO] Server is running on port 3000
+2026-06-27T12:43:11.281Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:44:06.808Z [INFO] Server is running on port 3000
+2026-06-27T12:44:06.859Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:46:59.588Z [INFO] Server is running on port 3000
+2026-06-27T12:46:59.662Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:47:05.380Z [INFO] Server is running on port 3000
+2026-06-27T12:47:05.433Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:47:51.543Z [INFO] Server is running on port 3000
+2026-06-27T12:47:51.583Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:48:17.773Z [INFO] Server is running on port 3000
+2026-06-27T12:48:19.233Z [INFO] Server is running on port 3000
+2026-06-27T12:48:19.285Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:49:07.731Z [INFO] Server is running on port 3000
+2026-06-27T12:49:07.780Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:50:07.342Z [INFO] Server is running on port 3000
+2026-06-27T12:50:07.395Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:50:18.301Z [INFO] Server is running on port 3000
+2026-06-27T12:50:18.355Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:50:31.387Z [INFO] Server is running on port 3000
+2026-06-27T12:50:31.454Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:53:09.367Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:53:09.381Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:53:09.390Z [INFO] Redis Connected
+2026-06-27T12:53:09.406Z [INFO] Redis Connected
+2026-06-27T12:53:09.424Z [ERROR] Error starting server: app is not defined
+2026-06-27T12:53:09.424Z [ERROR] Error starting server: app is not defined
+2026-06-27T12:53:56.150Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:53:56.174Z [INFO] Redis Connected
+2026-06-27T12:53:56.185Z [ERROR] Error starting server: app is not defined
+2026-06-27T12:53:56.202Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:53:56.221Z [INFO] Redis Connected
+2026-06-27T12:53:56.229Z [ERROR] Error starting server: app is not defined
+2026-06-27T12:54:11.326Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:54:11.346Z [INFO] Redis Connected
+2026-06-27T12:54:11.345Z [INFO] MongoDB Connected: localhost
+2026-06-27T12:54:11.363Z [INFO] Redis Connected
+2026-06-27T13:04:30.536Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:04:30.539Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:04:30.552Z [INFO] Redis Connected
+2026-06-27T13:04:30.559Z [INFO] Redis Connected
+2026-06-27T13:04:46.177Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:04:46.194Z [INFO] Redis Connected
+2026-06-27T13:04:46.214Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:04:46.225Z [INFO] Redis Connected
+2026-06-27T13:07:11.742Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:07:11.750Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:07:11.753Z [INFO] Redis Connected
+2026-06-27T13:07:11.759Z [INFO] Redis Connected
+2026-06-27T13:07:29.392Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:07:29.406Z [INFO] Redis Connected
+2026-06-27T13:07:29.416Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:07:29.427Z [INFO] Redis Connected
+2026-06-27T13:07:37.408Z [INFO] ::1 - - [27/Jun/2026:13:07:37 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 401 25 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:08:11.452Z [INFO] ::1 - - [27/Jun/2026:13:08:11 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 401 25 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:08:16.032Z [INFO] ::1 - - [27/Jun/2026:13:08:16 +0000] "POST /user/login HTTP/1.1" 200 388 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:08:40.808Z [INFO] ::1 - - [27/Jun/2026:13:08:40 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 200 220 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:08:44.427Z [ERROR] error :  logger is not defined
+2026-06-27T13:08:44.429Z [INFO] ::1 - - [27/Jun/2026:13:08:44 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 500 33 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:08:55.551Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:08:55.554Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:08:55.562Z [INFO] Redis Connected
+2026-06-27T13:08:55.567Z [INFO] Redis Connected
+2026-06-27T13:08:58.738Z [INFO] Returning cached jobs
+2026-06-27T13:08:58.744Z [INFO] ::1 - - [27/Jun/2026:13:08:58 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 200 220 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:09:02.654Z [INFO] Returning cached jobs
+2026-06-27T13:09:02.654Z [INFO] ::1 - - [27/Jun/2026:13:09:02 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 200 220 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:09:04.037Z [INFO] Returning cached jobs
+2026-06-27T13:09:04.038Z [INFO] ::1 - - [27/Jun/2026:13:09:04 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 200 220 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:09:05.190Z [INFO] Returning cached jobs
+2026-06-27T13:09:05.191Z [INFO] ::1 - - [27/Jun/2026:13:09:05 +0000] "GET /job/?userId=6a35852d1df4b8043a0cf616 HTTP/1.1" 200 220 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:10:09.924Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:10:09.937Z [INFO] Redis Connected
+2026-06-27T13:10:26.536Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:10:26.544Z [INFO] Redis Connected
+2026-06-27T13:10:33.118Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:10:33.125Z [INFO] Redis Connected

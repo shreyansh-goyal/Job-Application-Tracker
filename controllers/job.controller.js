@@ -1,6 +1,8 @@
 const Job = require("../db/models/job.schema");
 const User = require("../db/models/user.schema");
 const AppError = require("../utils/app.error");
+const redisClient = require("../config/redis");
+const logger = require("../utils/logger");
 
 const createJob = async (req, res, next) => {
   try {
@@ -14,6 +16,7 @@ const createJob = async (req, res, next) => {
     }
 
     const job = await Job.create({ role, status, notes, userId });
+    await redisClient.del(`jobs:${userId}`);
     return res.status(201).json(job);
   } catch (err) {
     next(err);
@@ -23,8 +26,17 @@ const createJob = async (req, res, next) => {
 const getJobs = async (req, res, next) => {
   try {
     const { userId } = req.user;
-    const jobs = await Job.find({ userId });
 
+    const cacheKey = `jobs:${userId}`;
+    const cachedJobs = await redisClient.get(cacheKey);
+
+    if (cachedJobs) {
+      logger.info("Returning cached jobs");
+      return res.status(200).json(JSON.parse(cachedJobs));
+    }
+
+    const jobs = await Job.find({ userId });
+    await redisClient.set(cacheKey, JSON.stringify(jobs), { EX: 300 });
     return res.status(200).json(jobs);
   } catch (err) {
     next(err);
@@ -63,6 +75,7 @@ const updateJobById = async (req, res, next) => {
       throw new AppError("Job not found", 400);
     }
 
+    await redisClient.del(`jobs:${userId}`);
     return res.status(200).json(updatedJob);
   } catch (error) {
     next(err);
@@ -74,11 +87,11 @@ const deleteJobById = async (req, res, next) => {
     const { userId } = req.user;
     const { id: jobId } = req.params;
     const deletedJob = await Job.deleteOne({ _id: jobId, userId });
-    console.log("deletedJob : ", deletedJob);
     if (!deletedJob.deletedCount) {
       throw new AppError("Job not found", 400);
     }
 
+    await redisClient.del(`jobs:${userId}`);
     return res.status(200).json(deletedJob);
   } catch (err) {
     next(err);

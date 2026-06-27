@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: .
+    container_name: job-application-tracker-backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_started
+  mongodb:
+    image: mongo:8
+    container_name: mongodb
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - mongo-data:/data/db
+  redis:
+    image: redis:8
+    container_name: redis
+volumes:
+  mongo-data:

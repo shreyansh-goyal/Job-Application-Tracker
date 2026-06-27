@@ -1,4 +1,5 @@
 const User = require("../db/models/user.schema");
+const AppError = require("../utils/app.error");
 const {
   generateAccessToken,
   generateRefreshToken,

@@ -1,4 +1,4 @@
-const Joi = require("Joi");
+const Joi = require("joi");
 
 const CreateJobSchema = Joi.object({
   role: Joi.string().required(),

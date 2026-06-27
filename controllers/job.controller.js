@@ -29,17 +29,28 @@ const getJobs = async (req, res, next) => {
     const { userId } = req.user;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const status = req.query.status || undefined;
+    const companyName = req.query.companyName || undefined;
+    const sort = req.query.sort || "createdAt";
     const skip = (page - 1) * limit;
 
-    const cacheKey = `jobs:${userId}:page:${page}:limit:${limit}`;
+    const query = { userId };
+    if (status) {
+      query.status = status;
+    }
+    if (companyName) {
+      query.companyName = companyName;
+    }
+
+    const cacheKey = `jobs:${userId}:page:${page}:limit:${limit}:status:${status || "all"}:companyName:${companyName || "all"}:sort:${sort}`;
     const cachedJobs = await redisClient.get(cacheKey);
 
     if (cachedJobs) {
       logger.info("Returning cached jobs");
       return res.status(200).json(JSON.parse(cachedJobs));
     }
-    const totalJobs = await Job.countDocuments({ userId });
-    const jobs = await Job.find({ userId }).skip(skip).limit(limit);
+    const totalJobs = await Job.countDocuments(query);
+    const jobs = await Job.find(query).sort(sort).skip(skip).limit(limit);
     const response = {
       jobs,
       pagination: {

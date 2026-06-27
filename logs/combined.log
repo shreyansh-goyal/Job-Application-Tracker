@@ -123,3 +123,27 @@
 2026-06-27T13:35:59.645Z [INFO] Redis Connected
 2026-06-27T13:36:13.009Z [INFO] MongoDB Connected: localhost
 2026-06-27T13:36:13.018Z [INFO] Redis Connected
+2026-06-27T13:36:23.117Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:36:23.125Z [INFO] Redis Connected
+2026-06-27T14:00:50.168Z [INFO] MongoDB Connected: localhost
+2026-06-27T14:00:50.179Z [INFO] Redis Connected
+2026-06-27T14:01:56.990Z [INFO] MongoDB Connected: localhost
+2026-06-27T14:01:57.001Z [INFO] Redis Connected
+2026-06-27T14:04:42.156Z [INFO] MongoDB Connected: localhost
+2026-06-27T14:04:42.163Z [INFO] Redis Connected
+2026-06-27T14:04:44.959Z [INFO] MongoDB Connected: localhost
+2026-06-27T14:04:44.972Z [INFO] Redis Connected
+2026-06-27T14:05:11.158Z [INFO] ::1 - - [27/Jun/2026:14:05:11 +0000] "GET /job/?page=1&limit=10&companyName=Deloitte HTTP/1.1" 401 25 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:05:19.755Z [INFO] ::1 - - [27/Jun/2026:14:05:19 +0000] "POST /user/login HTTP/1.1" 200 388 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:05:43.089Z [INFO] ::1 - - [27/Jun/2026:14:05:43 +0000] "GET /job/?page=1&limit=10&companyName=Deloitte HTTP/1.1" 200 119 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:05:47.280Z [INFO] Returning cached jobs
+2026-06-27T14:05:47.281Z [INFO] ::1 - - [27/Jun/2026:14:05:47 +0000] "GET /job/?page=1&limit=10&companyName=Deloitte HTTP/1.1" 200 119 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:05:48.736Z [INFO] Returning cached jobs
+2026-06-27T14:05:48.737Z [INFO] ::1 - - [27/Jun/2026:14:05:48 +0000] "GET /job/?page=1&limit=10&companyName=Deloitte HTTP/1.1" 200 119 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:05:49.904Z [INFO] Returning cached jobs
+2026-06-27T14:05:49.905Z [INFO] ::1 - - [27/Jun/2026:14:05:49 +0000] "GET /job/?page=1&limit=10&companyName=Deloitte HTTP/1.1" 200 119 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:06:03.347Z [INFO] ::1 - - [27/Jun/2026:14:06:03 +0000] "GET /job/?page=1&limit=10&companyName=Mercer HTTP/1.1" 200 337 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:06:04.858Z [INFO] Returning cached jobs
+2026-06-27T14:06:04.858Z [INFO] ::1 - - [27/Jun/2026:14:06:04 +0000] "GET /job/?page=1&limit=10&companyName=Mercer HTTP/1.1" 200 337 "-" "PostmanRuntime/7.54.0"
+2026-06-27T14:59:50.024Z [INFO] MongoDB Connected: localhost
+2026-06-27T14:59:50.035Z [INFO] Redis Connected

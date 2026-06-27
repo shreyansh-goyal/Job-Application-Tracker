@@ -92,3 +92,34 @@
 2026-06-27T13:10:26.544Z [INFO] Redis Connected
 2026-06-27T13:10:33.118Z [INFO] MongoDB Connected: localhost
 2026-06-27T13:10:33.125Z [INFO] Redis Connected
+2026-06-27T13:22:16.553Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:22:16.563Z [INFO] Redis Connected
+2026-06-27T13:23:12.832Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:23:12.844Z [INFO] Redis Connected
+2026-06-27T13:23:32.011Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:23:32.020Z [INFO] Redis Connected
+2026-06-27T13:25:51.610Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:25:51.618Z [INFO] Redis Connected
+2026-06-27T13:26:35.474Z [INFO] ::1 - - [27/Jun/2026:13:26:35 +0000] "GET /job/?page=1&limit=10 HTTP/1.1" 401 25 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:26:42.205Z [INFO] ::1 - - [27/Jun/2026:13:26:42 +0000] "POST /user/login HTTP/1.1" 200 388 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:27:00.326Z [INFO] ::1 - - [27/Jun/2026:13:27:00 +0000] "GET /job/?page=1&limit=10 HTTP/1.1" 200 293 "-" "PostmanRuntime/7.54.0"
+2026-06-27T13:28:19.574Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:28:19.583Z [INFO] Redis Connected
+2026-06-27T13:28:29.662Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:28:29.672Z [INFO] Redis Connected
+2026-06-27T13:28:53.138Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:28:53.147Z [INFO] Redis Connected
+2026-06-27T13:29:22.483Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:29:22.491Z [INFO] Redis Connected
+2026-06-27T13:29:34.997Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:29:35.018Z [INFO] Redis Connected
+2026-06-27T13:29:41.092Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:29:41.099Z [INFO] Redis Connected
+2026-06-27T13:34:01.732Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:34:01.741Z [INFO] Redis Connected
+2026-06-27T13:35:32.160Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:35:32.168Z [INFO] Redis Connected
+2026-06-27T13:35:59.636Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:35:59.645Z [INFO] Redis Connected
+2026-06-27T13:36:13.009Z [INFO] MongoDB Connected: localhost
+2026-06-27T13:36:13.018Z [INFO] Redis Connected

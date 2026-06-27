@@ -16,7 +16,8 @@ const createJob = async (req, res, next) => {
     }
 
     const job = await Job.create({ role, status, notes, userId });
-    await redisClient.del(`jobs:${userId}`);
+
+    await invalidateUserJobsCache(`jobs:${userId}:*`);
     return res.status(201).json(job);
   } catch (err) {
     next(err);
@@ -26,18 +27,32 @@ const createJob = async (req, res, next) => {
 const getJobs = async (req, res, next) => {
   try {
     const { userId } = req.user;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
 
-    const cacheKey = `jobs:${userId}`;
+    const cacheKey = `jobs:${userId}:page:${page}:limit:${limit}`;
     const cachedJobs = await redisClient.get(cacheKey);
 
     if (cachedJobs) {
       logger.info("Returning cached jobs");
       return res.status(200).json(JSON.parse(cachedJobs));
     }
-
-    const jobs = await Job.find({ userId });
-    await redisClient.set(cacheKey, JSON.stringify(jobs), { EX: 300 });
-    return res.status(200).json(jobs);
+    const totalJobs = await Job.countDocuments({ userId });
+    const jobs = await Job.find({ userId }).skip(skip).limit(limit);
+    const response = {
+      jobs,
+      pagination: {
+        totalJobs,
+        page,
+        limit,
+        totalPages: Math.ceil(totalJobs / limit),
+        hasNextPage: page * limit < totalJobs,
+        hasPreviousPage: page > 1,
+      },
+    };
+    await redisClient.set(cacheKey, JSON.stringify(response), { EX: 300 });
+    return res.status(200).json(response);
   } catch (err) {
     next(err);
   }
@@ -75,7 +90,7 @@ const updateJobById = async (req, res, next) => {
       throw new AppError("Job not found", 400);
     }
 
-    await redisClient.del(`jobs:${userId}`);
+    await invalidateUserJobsCache(`jobs:${userId}:*`);
     return res.status(200).json(updatedJob);
   } catch (error) {
     next(err);
@@ -90,8 +105,8 @@ const deleteJobById = async (req, res, next) => {
     if (!deletedJob.deletedCount) {
       throw new AppError("Job not found", 400);
     }
+    await invalidateUserJobsCache(`jobs:${userId}:*`);
 
-    await redisClient.del(`jobs:${userId}`);
     return res.status(200).json(deletedJob);
   } catch (err) {
     next(err);

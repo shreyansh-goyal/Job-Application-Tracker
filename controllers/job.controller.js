@@ -1,74 +1,48 @@
 const Job = require("../db/models/job.schema");
 const User = require("../db/models/user.schema");
+const AppError = require("../utils/app.error");
 
-const createJob = async (req, res) => {
+const createJob = async (req, res, next) => {
   try {
     const { userId } = req.user;
     const { role, companyName, status, notes } = req.body;
     const validStatuses = ["applied", "interview", "offer", "rejected"];
-
-    console.log("req.user:", req.user);
-    console.log("userId:", userId);
-    if (!role || !companyName || !userId) {
-      return res
-        .status(400)
-        .json({ error: "Role, company and userId are required" });
-    }
-    if (status && !validStatuses.includes(status)) {
-      return res.status(400).json({ error: "Invalid status value" });
-    }
-
-    console.log("Received job data: ", req.body);
-
     const userExists = await User.findOne({ _id: userId });
 
-    console.log(userExists);
     if (!userExists) {
-      return res.status(400).json({ error: "User not found" });
+      throw new AppError("User not found", 400);
     }
 
-    const job = await Job.create({ role, companyName, status, notes, userId });
+    const job = await Job.create({ role, status, notes, userId });
     return res.status(201).json(job);
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: "Something went wrong" });
+    next(err);
   }
 };
 
-const getJobs = async (req, res) => {
+const getJobs = async (req, res, next) => {
   try {
     const { userId } = req.user;
-    console.log(req.user);
-    if (!userId) {
-      return res.status(400).json({ error: "userId is required" });
-    }
     const jobs = await Job.find({ userId });
 
     return res.status(200).json(jobs);
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: "Something went wrong" });
+    next(err);
   }
 };
 
-const getJobById = async (req, res) => {
+const getJobById = async (req, res, next) => {
   try {
     const { userId } = req.user;
     const { id: jobId } = req.params;
-    if (!userId || !jobId) {
-      return res.status(400).json({ error: "userId and jobId are required" });
-    }
-
-    console.log(jobId, "  ", userId);
     const job = await Job.findOne({ userId, _id: jobId });
     return res.status(200).json(job);
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: "Something went wrong" });
+    next(err);
   }
 };
 
-const updateJobById = async (req, res) => {
+const updateJobById = async (req, res, next) => {
   try {
     const { userId } = req.user;
     const { id: jobId } = req.params;
@@ -76,44 +50,39 @@ const updateJobById = async (req, res) => {
 
     const validStatuses = ["applied", "interview", "offer", "rejected"];
 
-    console.log("Updating job with data: ", req.body);
-    if (status && !validStatuses.includes(status)) {
-      return res.status(400).json({ error: "Enter valid status" });
-    }
-
-    const updatedJob = await Job.findByIdAndUpdate(jobId, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const updatedJob = await Job.findOneAndUpdate(
+      { _id: jobId, userId },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
 
     if (!updatedJob) {
-      return res.status(400).json({ error: "job not found" });
+      throw new AppError("Job not found", 400);
     }
 
     return res.status(200).json(updatedJob);
   } catch (error) {
-    console.log("Error", error);
-    return res.status(500).json({ error: "Something went wrong" });
+    next(err);
   }
 };
 
-const deleteJobById = async (req, res) => {
-  const { userId } = req.user;
-  const { id: jobId } = req.params;
+const deleteJobById = async (req, res, next) => {
+  try {
+    const { userId } = req.user;
+    const { id: jobId } = req.params;
+    const deletedJob = await Job.deleteOne({ _id: jobId, userId });
+    console.log("deletedJob : ", deletedJob);
+    if (!deletedJob.deletedCount) {
+      throw new AppError("Job not found", 400);
+    }
 
-  if (!userId || !jobId) {
-    return res
-      .status(400)
-      .json({ error: "userId and jobId are mandatory fields" });
+    return res.status(200).json(deletedJob);
+  } catch (err) {
+    next(err);
   }
-
-  const deletedJob = await Job.deleteOne({ _id: jobId, userId });
-
-  if (!deletedJob) {
-    return res.status(400).json({ error: "Job not found" });
-  }
-
-  return res.status(200).json(deletedJob);
 };
 
 module.exports = {

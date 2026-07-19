@@ -147,3 +147,41 @@
 2026-06-27T14:06:04.858Z [INFO] ::1 - - [27/Jun/2026:14:06:04 +0000] "GET /job/?page=1&limit=10&companyName=Mercer HTTP/1.1" 200 337 "-" "PostmanRuntime/7.54.0"
 2026-06-27T14:59:50.024Z [INFO] MongoDB Connected: localhost
 2026-06-27T14:59:50.035Z [INFO] Redis Connected
+2026-06-29T08:19:31.125Z [ERROR] DB connection error:  getaddrinfo ENOTFOUND mongodb
+2026-06-29T08:19:31.130Z [ERROR] Redis Error:
+2026-06-29T08:19:31.311Z [ERROR] Redis Error:
+2026-06-29T08:19:31.577Z [ERROR] Redis Error:
+2026-06-29T08:19:31.904Z [ERROR] Redis Error:
+2026-06-29T08:19:32.502Z [ERROR] Redis Error:
+2026-06-29T08:19:33.396Z [ERROR] Redis Error:
+2026-06-29T08:19:35.144Z [ERROR] Redis Error:
+2026-06-29T08:19:37.205Z [ERROR] Redis Error:
+2026-06-29T08:28:20.530Z [INFO] MongoDB Connected: localhost
+2026-06-29T08:28:20.535Z [INFO] Redis Connected
+2026-06-29T08:28:27.509Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs HTTP/1.1" 301 158 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:28:27.519Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs/ HTTP/1.1" 200 3106 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:28:27.572Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs/swagger-ui-init.js HTTP/1.1" 200 1763 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:28:27.579Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs/swagger-ui.css HTTP/1.1" 200 178977 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:28:27.584Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1" 200 256694 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:28:27.594Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs/swagger-ui-bundle.js HTTP/1.1" 200 1537593 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:28:27.835Z [INFO] ::1 - - [29/Jun/2026:08:28:27 +0000] "GET /api-docs/favicon-32x32.png HTTP/1.1" 200 628 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:12.858Z [INFO] MongoDB Connected: localhost
+2026-06-29T08:31:12.872Z [INFO] Redis Connected
+2026-06-29T08:31:24.109Z [INFO] MongoDB Connected: localhost
+2026-06-29T08:31:24.122Z [INFO] Redis Connected
+2026-06-29T08:31:27.208Z [INFO] ::1 - - [29/Jun/2026:08:31:27 +0000] "GET /api-docs/ HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:27.239Z [INFO] ::1 - - [29/Jun/2026:08:31:27 +0000] "GET /api-docs/swagger-ui.css HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:27.242Z [INFO] ::1 - - [29/Jun/2026:08:31:27 +0000] "GET /api-docs/swagger-ui-bundle.js HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:27.245Z [INFO] ::1 - - [29/Jun/2026:08:31:27 +0000] "GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:27.249Z [INFO] ::1 - - [29/Jun/2026:08:31:27 +0000] "GET /api-docs/swagger-ui-init.js HTTP/1.1" 200 2822 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:27.507Z [INFO] ::1 - - [29/Jun/2026:08:31:27 +0000] "GET /api-docs/favicon-32x32.png HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:52.737Z [INFO] MongoDB Connected: localhost
+2026-06-29T08:31:52.753Z [INFO] Redis Connected
+2026-06-29T08:31:58.266Z [INFO] ::1 - - [29/Jun/2026:08:31:58 +0000] "GET /api-docs/ HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:58.295Z [INFO] ::1 - - [29/Jun/2026:08:31:58 +0000] "GET /api-docs/swagger-ui.css HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:58.298Z [INFO] ::1 - - [29/Jun/2026:08:31:58 +0000] "GET /api-docs/swagger-ui-bundle.js HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:58.300Z [INFO] ::1 - - [29/Jun/2026:08:31:58 +0000] "GET /api-docs/swagger-ui-init.js HTTP/1.1" 200 2844 "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:58.302Z [INFO] ::1 - - [29/Jun/2026:08:31:58 +0000] "GET /api-docs/swagger-ui-standalone-preset.js HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:31:58.388Z [INFO] ::1 - - [29/Jun/2026:08:31:58 +0000] "GET /api-docs/favicon-32x32.png HTTP/1.1" 304 - "http://localhost:3000/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
+2026-06-29T08:35:22.618Z [INFO] MongoDB Connected: localhost
+2026-06-29T08:35:22.629Z [INFO] Redis Connected

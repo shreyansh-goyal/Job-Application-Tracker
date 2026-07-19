@@ -3,3 +3,12 @@
 2026-06-27T12:53:56.185Z [ERROR] Error starting server: app is not defined
 2026-06-27T12:53:56.229Z [ERROR] Error starting server: app is not defined
 2026-06-27T13:08:44.427Z [ERROR] error :  logger is not defined
+2026-06-29T08:19:31.125Z [ERROR] DB connection error:  getaddrinfo ENOTFOUND mongodb
+2026-06-29T08:19:31.130Z [ERROR] Redis Error:
+2026-06-29T08:19:31.311Z [ERROR] Redis Error:
+2026-06-29T08:19:31.577Z [ERROR] Redis Error:
+2026-06-29T08:19:31.904Z [ERROR] Redis Error:
+2026-06-29T08:19:32.502Z [ERROR] Redis Error:
+2026-06-29T08:19:33.396Z [ERROR] Redis Error:
+2026-06-29T08:19:35.144Z [ERROR] Redis Error:
+2026-06-29T08:19:37.205Z [ERROR] Redis Error:

@@ -7,6 +7,8 @@ const authMiddleware = require("./middleware/auth.middleware");
 const errorHandler = require("./middleware/error.middleware");
 const morgan = require("morgan");
 const logger = require("./utils/logger");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 
 const app = express();
 dotenv.config();
@@ -17,6 +19,8 @@ const stream = {
   write: (message) => logger.info(message.trim()),
 };
 app.use(morgan("combined", { stream }));
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/user", userRoutes);
 app.use("/job", authMiddleware, jobRoutes);

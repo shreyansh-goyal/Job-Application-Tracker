@@ -7,6 +7,7 @@ const {
   logout,
 } = require("../controllers/user.controller");
 const authMiddleware = require("../middleware/auth.middleware");
+const { authRateLimit } = require("../middleware/rate-limiter.middleware");
 const validate = require("../middleware/validation.middleware");
 const {
   createUserSchema,
@@ -58,7 +59,7 @@ const {
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post("/signup", validate(createUserSchema), createUser);
+router.post("/signup", authRateLimit, validate(createUserSchema), createUser);
 
 /**
  * @swagger
@@ -106,7 +107,7 @@ router.post("/signup", validate(createUserSchema), createUser);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post("/login", validate(loginSchema), signIn);
+router.post("/login", authRateLimit, validate(loginSchema), signIn);
 
 /**
  * @swagger
@@ -145,7 +146,12 @@ router.post("/login", validate(loginSchema), signIn);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post("/refresh", validate(refreshSchema), refreshAuthToken);
+router.post(
+  "/refresh",
+  authRateLimit,
+  validate(refreshSchema),
+  refreshAuthToken,
+);
 
 /**
  * @swagger

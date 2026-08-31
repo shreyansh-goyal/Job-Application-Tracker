@@ -8,6 +8,10 @@ const logger = require("./utils/logger");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 const helmet = require("helmet");
+const {
+  requestTrackerMiddleware,
+} = require("./middleware/request-tracker.middleware");
+const healthRoutes = require("./routes/health.routes");
 
 const app = express();
 dotenv.config();
@@ -22,6 +26,9 @@ app.use(morgan("combined", { stream }));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use(requestTrackerMiddleware);
+
+app.use(healthRoutes);
 startServer(app, () => {
   const userRoutes = require("./routes/user.routes");
   const jobRoutes = require("./routes/job.routes");

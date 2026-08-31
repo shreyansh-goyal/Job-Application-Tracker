@@ -5,6 +5,7 @@ const {
   generateRefreshToken,
 } = require("../utils/jwt.utils");
 const jwt = require("jsonwebtoken");
+const env = require("../config/env");
 
 const createUser = async (req, res, next) => {
   try {
@@ -51,7 +52,7 @@ const signIn = async (req, res, next) => {
 const refreshAuthToken = async (req, res, next) => {
   const { refreshToken } = req.body;
   try {
-    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const decoded = jwt.verify(refreshToken, env.jwtRefreshSecret);
 
     const user = await User.findOne({
       _id: decoded.userId,

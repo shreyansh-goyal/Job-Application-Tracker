@@ -1,29 +1,28 @@
-name: Job Application Tracker CI/CD
+name: Backend CI
+
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "26"
-          cache: "npm"
+          node-version: 26
+          cache: npm
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Check Formatting
+      - name: Check formatting
         run: npm run format:check
 
-      - name: Build Docker Image
+      - name: Build Docker image
         run: docker build -t job-application-tracker-backend .

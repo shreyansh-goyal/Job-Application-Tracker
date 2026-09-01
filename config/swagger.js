@@ -27,7 +27,11 @@ const options = {
           properties: {
             _id: { type: "string", example: "60d21b4667d0d8992e610c85" },
             name: { type: "string", example: "john" },
-            email: { type: "string", format: "email", example: "john@gmail.com" },
+            email: {
+              type: "string",
+              format: "email",
+              example: "john@gmail.com",
+            },
             password: { type: "string", example: "$2a$10$..." },
             refreshToken: { type: "string", nullable: true, example: null },
             createdAt: { type: "string", format: "date-time" },

@@ -34,6 +34,15 @@ jobs:
           role-to-assume: arn:aws:iam::505599751031:role/github-job-tracker-ecr
           aws-region: ap-south-1
 
+      - name: Test SSM
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          aws ssm send-command \
+            --document-name "AWS-RunShellScript" \
+            --targets "Key=instanceIds,Values=i-011f45d4a4944c90d" \
+            --parameters 'commands=["echo Hello from GitHub Actions"]' \
+            --region ap-south-1
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2

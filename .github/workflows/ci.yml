@@ -54,11 +54,23 @@ jobs:
           role-to-assume: arn:aws:iam::505599751031:role/GitHubDeployViaSSM
           aws-region: ap-south-1
 
-      - name: Test SSM
+      - name: Deploy to EC2
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          IMAGE: ${{ steps.login-ecr.outputs.registry }}/job-application-tracker:${{ github.sha }}
         run: |
           aws ssm send-command \
             --document-name "AWS-RunShellScript" \
-            --targets "Key=instanceIds,Values=i-011f45d4a4944c90d" \
-            --parameters 'commands=["echo Hello from GitHub Actions"]' \
+            --targets "Key=tag:App,Values=job-application-tracker" \
+            --parameters "commands=[
+              \"set -e\",
+              \"cd /home/ubuntu/job-application-tracker\",
+              \"aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 505599751031.dkr.ecr.ap-south-1.amazonaws.com\",
+              \"docker pull $IMAGE\",
+              \"docker stop job-application-tracker || true\",
+              \"docker rm job-application-tracker || true\",
+              \"docker run -d --name job-application-tracker --env-file /home/ubuntu/job-application-tracker/.env -p 80:3000 --restart unless-stopped $IMAGE\",
+              \"sleep 5\",
+              \"curl -f http://127.0.0.1/health\"
+            ]" \
             --region ap-south-1

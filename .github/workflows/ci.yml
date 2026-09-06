@@ -68,7 +68,7 @@ jobs:
               \"aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 505599751031.dkr.ecr.ap-south-1.amazonaws.com\",
               \"docker pull $IMAGE\",
               \"docker stop job-application-tracker || true\",
-              \"docker rm job-app-tracker || true\",
+              \"docker rm job-application-tracker || true\",
               \"docker run -d --name job-application-tracker --env-file /home/ubuntu/job-app-tracker/.env -p 80:3000 --restart unless-stopped $IMAGE\",
               \"sleep 5\",
               \"curl -f http://127.0.0.1/health\"

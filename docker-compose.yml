@@ -9,12 +9,29 @@ services:
     environment:
       MONGO_URI: mongodb://mongodb:27017/app-tracker
       REDIS_URL: redis://redis:6379
+      RABBITMQ_URL: amqp://rabbitmq:5672
     restart: unless-stopped
     depends_on:
       mongodb:
         condition: service_healthy
       redis:
         condition: service_started
+      rabbitmq:
+        condition: service_healthy
+  worker:
+    build: .
+    container_name: job-application-tracker-worker
+    command: node worker.js
+    env_file:
+      - .env
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/app-tracker
+      REDIS_URL: redis://redis:6379
+      RABBITMQ_URL: amqp://rabbitmq:5672
+    restart: unless-stopped
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
   mongodb:
     image: mongo:8
     container_name: mongodb
@@ -28,5 +45,16 @@ services:
   redis:
     image: redis:8
     container_name: redis
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 volumes:
   mongo-data:

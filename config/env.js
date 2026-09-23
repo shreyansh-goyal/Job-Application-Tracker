@@ -11,6 +11,8 @@ const envSchema = Joi.object({
 
   REDIS_URL: Joi.string().required(),
 
+  RABBITMQ_URL: Joi.string().required(),
+
   JWT_ACCESS_SECRET: Joi.string().required(),
 
   JWT_REFRESH_SECRET: Joi.string().required(),
@@ -28,6 +30,7 @@ module.exports = {
   port: env.PORT,
   mongoUri: env.MONGO_URI,
   redisUrl: env.REDIS_URL,
+  rabbitmqUrl: env.RABBITMQ_URL,
   jwtAccessSecret: env.JWT_ACCESS_SECRET,
   jwtRefreshSecret: env.JWT_REFRESH_SECRET,
   logLevel: env.LOG_LEVEL,

@@ -8,12 +8,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node app",
+    "worker": "node worker",
     "up": "docker-compose up --build",
     "down": "docker-compose down",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "amqplib": "^0.10.4",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",

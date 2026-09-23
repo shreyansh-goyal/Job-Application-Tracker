@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const redisClient = require("../config/redis");
+const { closeRabbitMQ } = require("../config/rabbitmq");
 const logger = require("./logger");
 
 const {
@@ -25,6 +26,9 @@ const gracefulShutdown = (server) => {
           await redisClient.quit();
           logger.info("Redis connection closed");
         }
+
+        await closeRabbitMQ();
+        logger.info("RabbitMQ connection closed");
 
         if (mongoose.connection.readyState !== 0) {
           await mongoose.connection.close();

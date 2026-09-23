@@ -3,6 +3,11 @@ const User = require("../db/models/user.schema");
 const AppError = require("../utils/app.error");
 const redisClient = require("../config/redis");
 const logger = require("../utils/logger");
+const {
+  publishJobCreated,
+  publishJobStatusChanged,
+} = require("../services/event-publisher.service");
+const { invalidateUserJobsCache } = require("../services/cache.service");
 
 const createJob = async (req, res, next) => {
   try {
@@ -15,9 +20,10 @@ const createJob = async (req, res, next) => {
       throw new AppError("User not found", 400);
     }
 
-    const job = await Job.create({ role, status, notes, userId });
+    const job = await Job.create({ role, companyName, status, notes, userId });
 
     await invalidateUserJobsCache(`jobs:${userId}:*`);
+    publishJobCreated(job);
     return res.status(201).json(job);
   } catch (err) {
     next(err);
@@ -88,6 +94,12 @@ const updateJobById = async (req, res, next) => {
 
     const validStatuses = ["applied", "interview", "offer", "rejected"];
 
+    const existingJob = await Job.findOne({ _id: jobId, userId });
+    if (!existingJob) {
+      throw new AppError("Job not found", 400);
+    }
+    const previousStatus = existingJob.status;
+
     const updatedJob = await Job.findOneAndUpdate(
       { _id: jobId, userId },
       req.body,
@@ -102,8 +114,11 @@ const updateJobById = async (req, res, next) => {
     }
 
     await invalidateUserJobsCache(`jobs:${userId}:*`);
+    if (updatedJob.status !== previousStatus) {
+      publishJobStatusChanged(updatedJob, previousStatus);
+    }
     return res.status(200).json(updatedJob);
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 };

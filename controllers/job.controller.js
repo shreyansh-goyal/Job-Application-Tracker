@@ -3,6 +3,7 @@ const User = require("../db/models/user.schema");
 const AppError = require("../utils/app.error");
 const redisClient = require("../config/redis");
 const logger = require("../utils/logger");
+const { invalidateUserJobsCache } = require("../services/cache.service");
 
 const createJob = async (req, res, next) => {
   try {
@@ -15,7 +16,7 @@ const createJob = async (req, res, next) => {
       throw new AppError("User not found", 400);
     }
 
-    const job = await Job.create({ role, status, notes, userId });
+    const job = await Job.create({ role, companyName, status, notes, userId });
 
     await invalidateUserJobsCache(`jobs:${userId}:*`);
     return res.status(201).json(job);
@@ -103,7 +104,7 @@ const updateJobById = async (req, res, next) => {
 
     await invalidateUserJobsCache(`jobs:${userId}:*`);
     return res.status(200).json(updatedJob);
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 };

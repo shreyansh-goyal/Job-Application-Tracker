@@ -31,4 +31,6 @@ const jobSchema = new mongoose.Schema(
 );
 
 jobSchema.index({ userId: 1, companyName: 1, role: 1 }, { unique: true });
+jobSchema.index({ userId: 1, createdAt: -1 });
+jobSchema.index({ userId: 1, status: 1, createdAt: -1 });
 module.exports = mongoose.model("Job", jobSchema);
